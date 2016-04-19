@@ -105,4 +105,8 @@ vim /etc/group
 #games:x:20:
 #dip:x:40:
 13.
+禁用不必要的服务
+chkconfig acpid off
+chkconfig cups off
+chkconfig ip6tables off
 
