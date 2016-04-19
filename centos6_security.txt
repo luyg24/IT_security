@@ -45,10 +45,40 @@ uid<199的umask 为022 也就是root之类用户创建出来的权限是755
 首先创建个自定义banner文件
 echo "only authorized user can login" > /etc/ssh/mybanner
 修改配置文件/etc/ssh/sshd_config,在其中新增"Banner /etc/ssh/mybanner"
+注意：修改完重启ssh服务
 7.
-
-
-
-
-
-
+修改ssh访问控制
+修改/etc/hosts.allow 文件，在其中加入可以访问该机器的地址
+例如：
+sshd:10.35.0.0/255.255.0.0    #允许10.35.0.0段的所有主机访问
+修改/etc/hosts.deny文件，在其中加入的机器是禁止访问的
+sshd:all     #这里禁止所有
+注意：hosts.allow文件优先
+8.
+修改系统空闲超时时间
+修改ssh访问控制
+修改/etc/hosts.allow 文件，在其中加入可以访问该机器的地址
+例如：
+sshd:10.35.0.0/255.255.0.0    #允许10.35.0.0段的所有主机访问
+修改/etc/hosts.deny文件，在其中加入的机器是禁止访问的
+sshd:all     #这里禁止所有
+注意：hosts.allow文件优先
+8.
+设置空闲超时退出
+修改/etc/profile文件，在文件底部追加
+TMOUT=300    #设置空闲退出时间为300s
+9.
+su限制
+修改/etc/login.defs 文件，追加"SU_WHEEL_ONLY yes"
+修改/etc/pam.d/su文件，将"auth            required        pam_wheel.so use_uid"前面的#去掉即可
+然后将要配置有su权限的用户加入到wheel组
+usermod -G wheel work  
+以后work用户执行命令需要  sudo xxx 就俱备了root的权限了
+10.
+取消CTRL+ALT+DELETE
+修改/etc/init/control-alt-delete.conf
+将如下两句话注释掉即可
+start on control-alt-delete
+exec /sbin/shutdown -r now "Control-Alt-Delete pressed"
+11.
+修改motd
