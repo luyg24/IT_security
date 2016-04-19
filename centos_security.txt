@@ -1,4 +1,8 @@
 ######centos6安全加固#############
+首先需要更新一些软件
+bash
+openssl
+glic
 1.
  配置口令不允许重复次数和口令复杂度
 vim /etc/pam.d/system-auth
