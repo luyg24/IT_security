@@ -1,5 +1,6 @@
-######安全加固
-1. 配置口令不允许重复次数和口令复杂度
+######centos6安全加固#############
+1.
+ 配置口令不允许重复次数和口令复杂度
 vim /etc/pam.d/system-auth
 找到"password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok" 该行 
 在行后面添加  remember=5  代表不允许使用之前5次用过的密码
@@ -9,7 +10,8 @@ vim /etc/pam.d/system-auth
 password    requisite     pam_cracklib.so try_first_pass retry=3 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
 解释：设置密码最大重试3次，并且密码中必须至少包含1个大写，1个小写，1个数字，一个特殊字符
 注意：root用户不受此限制，普通用户需要用登陆后改密码才受限。
-2.禁止root登陆
+2.
+禁止root登陆
 vim  /etc/ssh/sshd_config
 找到"#PermitRootLogin yes" 修改为 PermitRootLogin no
 注意：修改完重启下ssh服务:
@@ -81,4 +83,7 @@ usermod -G wheel work
 start on control-alt-delete
 exec /sbin/shutdown -r now "Control-Alt-Delete pressed"
 11.
-修改motd
+修改motd,用于登陆系统后的提示信息。
+echo "Illegal users are not allowed to login, Only authorized users can login" >/etc/motd
+12.
+
