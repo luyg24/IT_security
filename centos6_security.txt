@@ -73,6 +73,9 @@ usermod -G wheel work
 将如下两句话注释掉即可
 start on control-alt-delete
 exec /sbin/shutdown -r now "Control-Alt-Delete pressed"
+针对centos7
+rm -rf /usr/lib/systemd/system/ctrl-alt-del.target  即可
+
 11.
 修改motd,用于登陆系统后的提示信息。
 echo "Illegal users are not allowed to login, Only authorized users can login" >/etc/motd
