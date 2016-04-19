@@ -85,5 +85,24 @@ exec /sbin/shutdown -r now "Control-Alt-Delete pressed"
 11.
 修改motd,用于登陆系统后的提示信息。
 echo "Illegal users are not allowed to login, Only authorized users can login" >/etc/motd
+当用显示器连接linux主机的时候，屏幕会显示系统版本等相关信息，可以将他取消掉，将/etc/issue和/etc/issue.net改名即可
 12.
+禁用不用的用户和组
+vim /etc/passwd
+#adm:x:3:4:adm:/var/adm:/sbin/nologin
+#lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+#sync:x:5:0:sync:/sbin:/bin/sync
+#shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+#halt:x:7:0:halt:/sbin:/sbin/halt
+#uucp:x:10:14:uucp:/var/spool/uucp:/sbin/nologin
+#operator:x:11:0:operator:/root:/sbin/nologin
+#games:x:12:100:games:/usr/games:/sbin/nologin
+#gopher:x:13:30:gopher:/var/gopher:/sbin/nologin
+vim /etc/group
+#adm:x:4:root,adm,daemon
+#lp:x:7:daemon,lp
+#uucp:x:14:uucp
+#games:x:20:
+#dip:x:40:
+13.
 
