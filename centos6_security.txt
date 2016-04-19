@@ -1,2 +1,9 @@
 ######安全加固
-1. 
+1. 配置口令不允许重复次数
+vim /etc/pam.d/system-auth
+找到"password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok" 该行 
+在行后面添加  remember=3  代表不允许使用之前3次用过的密码
+修改效果：password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok remember=3
+注意：root用户不受此限制，普通用户需要用登陆后改密码才受限。
+2.
+
