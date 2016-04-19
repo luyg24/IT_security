@@ -1,9 +1,54 @@
 ######安全加固
-1. 配置口令不允许重复次数
+1. 配置口令不允许重复次数和口令复杂度
 vim /etc/pam.d/system-auth
 找到"password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok" 该行 
-在行后面添加  remember=3  代表不允许使用之前3次用过的密码
-修改效果：password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok remember=3
+在行后面添加  remember=5  代表不允许使用之前5次用过的密码
+修改效果：password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok remember=5
+找到"password    requisite     pam_cracklib.so"行
+修改为：
+password    requisite     pam_cracklib.so try_first_pass retry=3 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
+解释：设置密码最大重试3次，并且密码中必须至少包含1个大写，1个小写，1个数字，一个特殊字符
 注意：root用户不受此限制，普通用户需要用登陆后改密码才受限。
-2.
+2.禁止root登陆
+vim  /etc/ssh/sshd_config
+找到"#PermitRootLogin yes" 修改为 PermitRootLogin no
+注意：修改完重启下ssh服务:
+service sshd restart
+3.
+修改口令长度和过期时间
+vim /etc/login.defs
+修改如下内容
+PASS_MAX_DAYS   90
+PASS_MIN_DAYS   1
+PASS_MIN_LEN    9
+PASS_WARN_AGE   7
+解释：
+#       PASS_MAX_DAYS   Maximum number of days a password may be used.
+#       PASS_MIN_DAYS   Minimum number of days allowed between password changes.
+#       PASS_MIN_LEN    Minimum acceptable password length.
+#       PASS_WARN_AGE   Number of days warning given before a password expires.
+4.
+设置连续认证失败次数,并设置失败锁定时间
+修改两个文件(/etc/pam.d/system-auth和/etc/pam.d/sshd)，分别在两个文件的开始位置加入
+auth        required    pam_tally2.so    deny=6    unlock_time=300 even_deny_root root_unlock_time=120
+解释：设置最大失败次数为6次，如果超过6次则锁定300s，root用户锁定120s
+注意：如果这两个文件中有"required pam_tally2.so deny"这句的话需要删掉
+5. 
+umask 降权,设置历史命令个数
+默认uid>199的 umask为002  也就是普通用户创建出来的文件权限是775
+uid<199的umask 为022 也就是root之类用户创建出来的权限是755
+这里需要修改/etc/profile 修改为027
+直接在该文件下新增一行 "umask 027" 即可.
+修改HISTSIZE=10 设置最大历史命令设置为10
+6.
+修改ssh banner
+首先创建个自定义banner文件
+echo "only authorized user can login" > /etc/ssh/mybanner
+修改配置文件/etc/ssh/sshd_config,在其中新增"Banner /etc/ssh/mybanner"
+7.
+
+
+
+
+
 
