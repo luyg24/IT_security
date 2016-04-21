@@ -1,0 +1,26 @@
+本文档针对centos系统
+1.
+yum install python-setuptools && easy_install pip
+pip install shadowsocks
+2.新建配置文件
+vim /etc/shadowsocks.json
+内容如下：
+{ 
+   "server":"0.0.0.0", 
+   "server_port":9001,   备注：这里就是你要提供服务的端口
+   "local_address": "127.0.0.1", 
+   "local_port":1080, 
+   "password":"mypassword",
+    "timeout":300, 
+   "method":"aes-256-cfb", 
+   "fast_open": false }  
+解释：
+server: 服务器ip地址
+server_port: 绑定的端口，注意不要设置已经使用了的端口
+possword: 密码
+timeout: 超时时间
+method: 加密方法
+fast_open: 如果你的服务器 Linux 内核在3.7+，可以开启 fast_open 以降低延迟
+3. 启动/停止服务
+ssserver -c /etc/shadowsocks.json -d start/stop
+4. 客户端安装shadowsocks客户端即可使用
