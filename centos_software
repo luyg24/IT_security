@@ -1,0 +1,22 @@
+软件更新
+1. vsftp3.0安装
+注意：需要新安装yum install libcap-devel
+然后 make && make install 即安装完成
+vsftpd.conf文件在/etc下
+具体配置如下：
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+local_umask=022
+dirmessage_enable=YES
+xferlog_enable=YES
+connect_from_port_20=YES
+xferlog_std_format=YES
+listen=YES
+#以下是指定ftp根目录，注意该目录权限需要设置确保ftp用户有权限读写。
+local_root=/workbase/tftp/
+启动服务：
+nohup /usr/local/sbin/vsftpd &
+2. 
+
+
