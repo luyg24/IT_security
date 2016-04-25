@@ -12,3 +12,7 @@
 
 四、ossec
 
+五、zabbix监控
+
+六、ELK
+
