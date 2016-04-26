@@ -1,0 +1,6 @@
+###############F5
+ssl证书部署在f5上，客户端可能会提示ssl使用的加密方法过时:
+"The connection is encrypted using AES_256_CBC, with SHA1 for message authentication and ECDHE_RSA as the key exchange mechanism."
+f5需要配置ssl 配置文件，使用如下方式：
+!LOW:!SSLv3:!MD5:!RC4-SHA:!DHE:!EXPORT:ECDHE+AES-GCM:ECDHE:RSA+AES:RSA+3DES
+
