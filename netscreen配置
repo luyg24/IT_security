@@ -1,0 +1,6 @@
+一、基本配置
+1. ntp配置
+set clock ntp
+set clock timezone 7
+set ntp server 10.12.3.101
+set ntp interval 5
