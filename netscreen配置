@@ -8,10 +8,33 @@ set clock timezone 7
 set ntp server ntp.ehomepay.com.cn
 set ntp interval 5
 3. 配置空闲超时时间
+set config lock timeout 5
 set admin auth web timeout 5
 4.配置登陆和验证方式
 set ssh version v2
 set ssh enable 
 set admin http redirect
 set admin auth server "Local"
-5.
+5.配置远程管理，snmp等
+set interface ethernet/x/x ip manageable
+set interface ethernetx/x manage ping
+set interface ethernetx/x manage ssh
+set interface ethernetx/x manage snmp
+set interface ethernetx/x manage ssl
+set interface ethernetx/x manage web
+注：外网口不配置snmp
+二、安全配置
+1. 密码长度限制
+set password-policy user-type auth  minimum-length 9
+注：netscreen系列无法进行其他密码复杂度限制
+2. 设置登陆白名单
+创建策略只允许从指定ip进行内网管理，外网暂时不限制，但需要对外网登陆进行审计
+3. 创建不同角色用户
+至少需要包含一个审计角色（只读权限）和一个管理员角色（用于日常运维）
+4. 设置登陆提示
+set admin auth banner secondary "Notification :if you are not authorized to access,please keep out of here,otherwise we will investigate legal responsibility !"
+set admin auth banner console login "Notification :if you are not authorized to access,please keep out of here,otherwise we will investigate legal responsibility !"
+5.登陆限制
+set admin access attempts 6   密码错误最多6次
+set admin  access lock-on-failure 5  错误超过6次锁定5分钟
+ 
