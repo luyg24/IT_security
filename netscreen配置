@@ -23,6 +23,8 @@ set interface ethernetx/x manage snmp
 set interface ethernetx/x manage ssl
 set interface ethernetx/x manage web
 注：外网口不配置snmp
+6. 配置日志服务
+
 二、安全配置
 1. 密码长度限制
 set password-policy user-type auth  minimum-length 9
