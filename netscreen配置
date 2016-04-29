@@ -7,3 +7,11 @@ set clock ntp
 set clock timezone 7
 set ntp server ntp.ehomepay.com.cn
 set ntp interval 5
+3. 配置空闲超时时间
+set admin auth web timeout 5
+4.配置登陆和验证方式
+set ssh version v2
+set ssh enable 
+set admin http redirect
+set admin auth server "Local"
+5.
