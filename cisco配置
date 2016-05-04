@@ -5,6 +5,8 @@ ip name-server 10.12.3.101 use-vrf management
 2. ntp配置
 ntp server ntp.ehomepay.com.cn prefer
 no feature ntp
+ntp source-interface  Vlan10
+set ntp interval 5
 3. 配置空闲超时时间
 line vty 0 15
 exec-timeout 5
