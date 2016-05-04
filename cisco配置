@@ -1,31 +1,31 @@
 一、基本配置
 1. dns配置
 ip name-server 10.12.3.101
-ip name-server 10.12.3.101 use-vrf management
 2. ntp配置
-ntp server ntp.ehomepay.com.cn prefer
-no feature ntp
-ntp source-interface  Vlan10
-set ntp interval 5
+clock timezone beijing +8   配置时区
+ntp server ntp.ehomepay.com.cn 
+ntp source x/x
 3. 配置空闲超时时间
 line vty 0 15
 exec-timeout 5
 4.配置登陆和验证方式
-feature ssh
-no feature telnet
+aaa new-model
+ip domain name ehomepay.com.cn
+crypto pki token default removal timeout 0
+line vty 0 15
+ transport input ssh
 5.配置远程管理，snmp等
 snmp-server  community xxxxxx ro
 6. 配置日志服务
 logging server x.x.x.x
 二、安全配置
 1. 密码长度限制
-password strength-check
 至少包括8个字符，包括大小写和数字，不能是常见单词，不能有重复字符
 2. 设置登陆白名单
 IP access list vty-acl-in
         20 permit tcp 10.12.1.22/32 any eq 22 log
         30 permit tcp 10.12.1.25/32 any eq 22 log
-line vty 
+line vty 0 15
 ip access-class vty-acl-in in
 3. 创建不同角色用户
 至少需要包含一个审计角色（只读权限）和一个管理员角色（用于日常运维）
