@@ -30,7 +30,7 @@ ip access-class vty-acl-in in
 3. 创建不同角色用户
 至少需要包含一个审计角色（只读权限）和一个管理员角色（用于日常运维）
 4. 设置登陆提示
-banner motd $Notification :if you are not authorized to access,please keep out 
+banner motd $Notification :if you are not authorized to access,please keep out of here,otherwise we will investigate legal responsibility !$
 5.登陆限制
 需要配合3A服务器
 6. 会话限制
