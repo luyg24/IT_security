@@ -8,7 +8,7 @@ timeout 5
 5.配置远程管理，snmp等
 snmpconfig --show snmpv1 根据提示走完即可
 6. 配置日志服务
-logging server x.x.x.x
+syslogdidadd x.x.x.x
 二、安全配置
 1. 密码长度限制
 passwdcfg --set -uppercase 1 -lowercase 1 -digits 1 -minlength 9
