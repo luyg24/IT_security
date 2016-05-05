@@ -5,13 +5,8 @@ tsclockserver 10.12.3.10tsclockserver 10.12.3.1011
 3. 配置空闲超时时间
 timeout 5
 4.配置登陆和验证方式
-aaa new-model
-ip domain name ehomepay.com.cn
-crypto pki token default removal timeout 0
-line vty 0 15
- transport input ssh
 5.配置远程管理，snmp等
-snmp-server  community xxxxxx ro
+snmpconfig --show snmpv1 根据提示走完即可
 6. 配置日志服务
 logging server x.x.x.x
 二、安全配置
