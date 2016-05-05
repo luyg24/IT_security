@@ -1,13 +1,15 @@
 一、基本配置
 1. dns配置
 2. ntp配置
-tsclockserver 10.12.3.10tsclockserver 10.12.3.1011
+tsclockserver 10.12.3.101
 3. 配置空闲超时时间
 timeout 5
 4.配置登陆和验证方式
 5.配置远程管理，snmp等
 snmpconfig --show snmpv1 根据提示走完即可
 6. 配置日志服务
+auditcfg --enable 开启日志
+auditdump -s 查看本地日志
 syslogdidadd x.x.x.x
 二、安全配置
 1. 密码长度限制
@@ -20,18 +22,12 @@ passwdcfg --set -minpasswordage 1 -maxpasswordage 90
 passwdcfg --set -lockoutthreshold 6 -lockoutduration 5
 密码失败6次之后锁定账号，5分钟后解锁
 2. 设置登陆白名单
-IP access list vty-acl-in
-        20 permit tcp 10.12.1.22/32 any eq 22 log
-        30 permit tcp 10.12.1.25/32 any eq 22 log
-line vty 0 15
-ip access-class vty-acl-in in
+
 3. 创建不同角色用户
 至少需要包含一个审计角色（只读权限）和一个管理员角色（用于日常运维）
 4. 设置登陆提示
 banner motd $Notification :if you are not authorized to access,please keep out of here,otherwise we will investigate legal responsibility !$
 5.登陆限制
-需要配合3A服务器
+
 6. 会话限制
-line vty
-session-limit 2   最大同时两个ssh用户登陆
  
