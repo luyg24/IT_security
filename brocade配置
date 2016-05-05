@@ -3,8 +3,7 @@
 2. ntp配置
 tsclockserver 10.12.3.10tsclockserver 10.12.3.1011
 3. 配置空闲超时时间
-line vty 0 15
-exec-timeout 5
+timeout 5
 4.配置登陆和验证方式
 aaa new-model
 ip domain name ehomepay.com.cn
@@ -23,6 +22,8 @@ passwdcfg --set -history 3
 密码不能和上次三次密码相同
 passwdcfg --set -minpasswordage 1 -maxpasswordage 90
 密码最少使用1天，最长使用90天
+passwdcfg --set -lockoutthreshold 6 -lockoutduration 5
+密码失败6次之后锁定账号，5分钟后解锁
 2. 设置登陆白名单
 IP access list vty-acl-in
         20 permit tcp 10.12.1.22/32 any eq 22 log
