@@ -21,6 +21,8 @@ passwdcfg --set -uppercase 1 -lowercase 1 -digits 1 -minlength 9
 至少包括9个字符，包括大小写和数字
 passwdcfg --set -history 3
 密码不能和上次三次密码相同
+passwdcfg --set -minpasswordage 1 -maxpasswordage 90
+密码最少使用1天，最长使用90天
 2. 设置登陆白名单
 IP access list vty-acl-in
         20 permit tcp 10.12.1.22/32 any eq 22 log
