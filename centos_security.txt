@@ -7,11 +7,11 @@ glic
  配置口令不允许重复次数和口令复杂度
 vim /etc/pam.d/system-auth
 找到"password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok" 该行 
-在行后面添加  remember=5  代表不允许使用之前5次用过的密码
-修改效果：password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok remember=5
+在行后面添加  remember=3  代表不允许使用之前3次用过的密码
+修改效果：password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok remember=3
 找到"password    requisite     pam_cracklib.so"行
 修改为：
-password    requisite     pam_cracklib.so try_first_pass retry=3 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
+password    requisite     pam_cracklib.so try_first_pass retry=6 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
 解释：设置密码最大重试3次，并且密码中必须至少包含1个大写，1个小写，1个数字，一个特殊字符
 注意：root用户不受此限制，普通用户需要用登陆后改密码才受限。
 2.
