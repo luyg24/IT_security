@@ -1,2 +1,60 @@
 ##########f5配置
+1.修改dns
+vim /etc/resolv.conf
+新增nameserver  x.x.x.x  即可
+2. 配置时间同步
+新增crontab，ntpdate x.x.x.x 即可
+3. 配置口令不允许重复次数和口令复杂度
 
+password    required      /lib/security/$ISA/pam_cracklib.so retry=6 type=BIG-IP minlen=9 dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1
+password    sufficient    /lib/security/$ISA/pam_unix.so use_authtok sha512 shadow remember=3 min_days=0 max_days=90 warn_age=7
+
+4. 设置连续认证失败次数,并设置失败锁定时间
+修改两个文件(/etc/pam.d/system-auth和/etc/pam.d/sshd)，分别在两个文件的开始位置加入
+auth        required    pam_tally2.so    deny=6    unlock_time=300 even_deny_root root_unlock_time=120
+解释：设置最大失败次数为6次，如果超过6次则锁定300s，root用户锁定120s
+注意：如果这两个文件中有"required pam_tally2.so deny"这句的话需要删掉
+5. 修改口令长度和过期时间
+vim /etc/login.defs
+修改如下内容
+PASS_MAX_DAYS   90
+PASS_MIN_DAYS   1
+PASS_MIN_LEN    9
+PASS_WARN_AGE   7
+
+6. 设置空闲超时退出
+修改/etc/profile文件，在文件底部追加
+TMOUT=300    #设置空闲退出时间为300s
+
+7. 修改ssh访问控制
+修改/etc/hosts.allow 文件，在其中加入可以访问该机器的地址
+例如：
+sshd:10.35.0.0/255.255.0.0    #允许10.35.0.0段的所有主机访问
+修改/etc/hosts.deny文件，在其中加入的机器是禁止访问的
+sshd:all     #这里禁止所有
+注意：hosts.allow文件优先
+
+注意:以上密码和访问控制相关只在ssh下生效，web界面需要另行配置
+1. 配置密码复杂度
+systems--users--authentication
+Secure Password Enforcement	选择 enable
+Minimum Length	
+9
+characters
+Required Characters	
+Numeric:	
+1
+Uppercase:	
+1
+Lowercase:	
+1
+Other:	
+1
+Minimum Duration	
+0 days
+Maximum Duration	
+90 days
+Expiration Warning	
+7 days
+Maximum Login Failures	
+6
