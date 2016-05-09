@@ -33,6 +33,7 @@ sshd:10.35.0.0/255.255.0.0    #允许10.35.0.0段的所有主机访问
 修改/etc/hosts.deny文件，在其中加入的机器是禁止访问的
 sshd:all     #这里禁止所有
 注意：hosts.allow文件优先
+#######################################################
 
 注意:以上密码和访问控制相关只在ssh下生效，web界面需要另行配置
 1. 配置密码复杂度
@@ -58,3 +59,11 @@ Expiration Warning
 7 days
 Maximum Login Failures	
 6
+2. 配置空闲超时
+system -- preferences -- 
+Idle Time Before Automatic Logout	
+300 seconds
+3. 配置登陆提示
+Security Banner Text To Show On The Login Screen
+Illegal users are not allowed to login, Only authorized users can login
+
