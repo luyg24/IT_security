@@ -15,6 +15,8 @@ no feature telnet
 snmp-server  community xxxxxx ro
 6. 配置日志服务
 logging server x.x.x.x
+logging  event link-status enable
+logging  event trunk-status enable
 二、安全配置
 1. 密码长度限制
 password strength-check
