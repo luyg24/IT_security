@@ -1,0 +1,7 @@
+一、update msf
+vim /etc/apt/source.list
+删除内容，增加如下两句
+deb http://http.kali.org/kali kali main non-free contrib
+deb-src http://http.kali.org/kali kali main non-free contrib
+然后apt-get update
+
