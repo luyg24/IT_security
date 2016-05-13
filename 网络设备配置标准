@@ -9,3 +9,9 @@
 4. 配置超时退出
 空闲5分钟超时退出
 5. 配置密码复杂度 
+至少包含大小写、数字、特殊字符的三种
+6. 配置登陆提示
+Notification :if you are not authorized to access,please keep out of here,otherwise we will investigate legal responsibility !
+7. 配置登陆白名单
+只允许堡垒机和运维主机进行登陆
+8. 
