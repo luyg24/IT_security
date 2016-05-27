@@ -36,4 +36,14 @@ banner motd $Notification :if you are not authorized to access,please keep out o
 6. 会话限制
 line vty
 session-limit 2   最大同时两个ssh用户登陆
- 
+7. 关闭不必要服务
+参考：http://network.51cto.com/art/201106/267266.htm
+ no ip http-server
+ no ip http secure-server
+ no ip finger
+ no service finge
+ no cdp run
+ no service tcp-small-servers
+ no service udp-small-servers
+ no ip identd (2960x 没有)
+ no ip source-route
