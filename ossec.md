@@ -14,3 +14,5 @@ restart the server and agent
 view active agent in ossec server : ./agent_control -l
 
 ###3. control the angent use ossec-server
+
+
