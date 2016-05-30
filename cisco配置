@@ -13,6 +13,7 @@ aaa new-model
 ip domain name ehomepay.com.cn
 crypto pki token default removal timeout 0
 line vty 0 15
+ transport input none
  transport input ssh
 5.配置远程管理，snmp等
 snmp-server  community xxxxxx ro
