@@ -52,6 +52,6 @@
 - server服务
 - workstation服务
 - remote registry service 服务
-
+- print spooler 服务
 
 
