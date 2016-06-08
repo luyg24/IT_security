@@ -1,4 +1,6 @@
 #mysql
+##安全思路
+1. 
 ##安全配置
 1. 禁用本地文件加载
 - 修改my.cnf 文件，在[mysqld] 范围内新增"local-infile=0",重启mysql即可
