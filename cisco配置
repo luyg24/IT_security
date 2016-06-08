@@ -9,9 +9,9 @@ ntp source x/x
 line vty 0 15
 exec-timeout 5
 4.配置登陆和验证方式
-aaa new-model
-ip domain name ehomepay.com.cn
-crypto pki token default removal timeout 0
+password encryption aes
+ip domain-name ehomepay.com.cn
+crypto key  generate rsa  general-keys modulus 1024
 line vty 0 15
  transport input none
  transport input ssh
