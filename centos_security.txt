@@ -134,4 +134,12 @@ chkconfig sendmail off
 chkconfig xfs off
 chkconfig yum-updatesd off
 chkconfig NetworkManager off
+14.
+禁用usb对存储的挂载（只允许连键鼠等非存储设备）
+在/etc/modprobe.d/blacklist.conf 里面新增
+blacklist usb-storage
+然后命令行： modprobe -r usb-storage
+取消禁用：
+删除blacklist usb-storage
+然后命令行: modprobe usb-storage , insmod usb-storage
 
