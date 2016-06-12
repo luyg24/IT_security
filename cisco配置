@@ -47,5 +47,5 @@ session-limit 2   最大同时两个ssh用户登陆
  no cdp run
  no service tcp-small-servers
  no service udp-small-servers
- no ip identd (2960x 没有)
  no ip source-route
+ no ip identd (2960x 没有)
