@@ -59,6 +59,7 @@ Expiration Warning
 7 days
 Maximum Login Failures	
 6
+
 2. 配置空闲超时
 system -- preferences -- 
 Idle Time Before Automatic Logout	
@@ -66,4 +67,6 @@ Idle Time Before Automatic Logout
 3. 配置登陆提示
 Security Banner Text To Show On The Login Screen
 Illegal users are not allowed to login, Only authorized users can login
-
+#########################
+iruls 写法要求：
+所有条件最后一定要加上一个else 指向默认的pool,否则会出现iruls匹配不上任何pool的问题
