@@ -69,4 +69,4 @@ Security Banner Text To Show On The Login Screen
 Illegal users are not allowed to login, Only authorized users can login
 #########################
 iruls 写法要求：
-所有条件最后一定要加上一个else 指向默认的pool,否则会出现iruls匹配不上任何pool的问题
+所有条件最后一定要加上一个else 指向默认的pool,否则会出现iruls匹配不上任何pool的问题,目前看到的现象是如果匹配了iruls之后，新来的请求如果没有匹配，会导致f5把请求发送给上次匹配的pool
