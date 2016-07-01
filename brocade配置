@@ -31,3 +31,5 @@ banner motd $Notification :if you are not authorized to access,please keep out o
 
 6. 会话限制
  
+other：
+创建账号：userconfig --add username -r user -l 1,128 -c user -p ‘password’
