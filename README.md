@@ -15,7 +15,7 @@
 
 ##四、ossec
 
-##五、zabbix监控
+##五、ids
 
 ##六、ELK
 
