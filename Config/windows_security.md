@@ -7,7 +7,7 @@
 - 首先开启Automatic Updates 服务
 - 然后修改组策略，计算机配置--管理模板--windows组件--windows update
 - 启用配置自动更新，模式选择“3-自动下载并通知安装”，计划安装日期“0-每天”，计划安装时间“03：00”
-- 启用指定intranet 更新服务位置,为检测更新设置Intranet更新服务：“http://wsus.ehomepay.com.cn”,设置Intranet统计服务器“http://wsus.ehomepay.com.cn”
+- 启用指定intranet 更新服务位置,为检测更新设置Intranet更新服务：“http://x.x.x.x”,设置Intranet统计服务器“http://x.x.x.x”
 - 启用自动更新检测频率，间隔检查更新配置为“22小时”
 - 然后在命令提示符输入：gpupdate /force  执行完毕之后执行  wuauclt.exe /detectnow
 
@@ -16,7 +16,7 @@
 - 首先开启windows update 服务
 - 然后修改组策略，计算机配置--管理模板--windows组件--windows update
 - 然后配置自动更新，模式选择“3-自动下载并通知安装”，计划安装日期“0-每天”，计划安装时间“03：00”
-- 启用指定intranet 更新服务位置,为检测更新设置Intranet更新服务：“http://wsus.ehomepay.com.cn”,设置Intranet统计服务器“http://wsus.ehomepay.com.cn”
+- 启用指定intranet 更新服务位置,为检测更新设置Intranet更新服务：“http://x.x.x.x”,设置Intranet统计服务器“http://x.x.x.x”
 - 启用自动更新检测频率，间隔检查更新配置为“22小时”
 - 然后在命令提示符输入：gpupdate /force  执行完毕之后执行  wuauclt.exe /detectnow 
 
