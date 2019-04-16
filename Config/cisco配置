@@ -3,7 +3,7 @@
 ip name-server 10.12.3.101
 2. ntp配置
 clock timezone beijing +8   
-ntp server 10.12.3.101
+ntp server x.x.x.x
 ntp source x/x
 3. 配置空闲超时时间
 line vty 0 15
@@ -11,7 +11,6 @@ exec-timeout 5
 4.配置登陆和验证方式
 no ip domain-lookup
 password encryption aes
-ip domain-name ehomepay.com.cn
 crypto key  generate rsa  general-keys modulus 1024
 line vty 0 15
  transport input none
