@@ -1,9 +1,9 @@
 一、基本配置
 1. dns配置
-ip name-server 10.12.3.101
-ip name-server 10.12.3.101 use-vrf management
+ip name-server x.x.x.x
+ip name-server x.x.x.x use-vrf management
 2. ntp配置
-ntp server ntp.ehomepay.com.cn prefer
+ntp server x.x.x.x prefer
 no feature ntp
 3. 配置空闲超时时间
 line vty 0 15
