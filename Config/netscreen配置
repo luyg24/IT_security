@@ -5,7 +5,7 @@ set dns host dns2 8.8.8.8 src-interface ethernet1/3.10
 2. ntp配置
 set clock ntp
 set clock timezone 7
-set ntp server ntp.ehomepay.com.cn
+set ntp server x.x.x.x
 set ntp interval 5
 3. 配置空闲超时时间
 set config lock timeout 5
